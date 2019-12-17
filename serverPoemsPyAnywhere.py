@@ -3,7 +3,7 @@ from poemsDAOPythonAnywhere import poemsDAOPythonAnywhere
 from flask_cors import CORS
 
 app = Flask(__name__, static_url_path='', static_folder='.')
-CORS(app)
+#CORS(app)
 
 @app.route('/')
 def index():
