@@ -1,0 +1,3 @@
+Database host address:jconneely.mysql.pythonanywhere-services.com
+Username:jconneely p/w datarep1
+Start a console on:jconneely$poetry
