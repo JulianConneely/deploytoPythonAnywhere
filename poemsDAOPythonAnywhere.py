@@ -1,6 +1,6 @@
 import mysql.connector
 import dbconfiguration as cfg
-class poemsDAO:
+class poemsDAOPythonAnywhere:
     db=""
     def __init__(self): 
         self.db = mysql.connector.connect(
@@ -67,4 +67,4 @@ class poemsDAO:
         
         return item
         
-poemsDAO = poemsDAO()
+poemsDAOPythonAnywhere = poemsDAOPythonAnywhere()

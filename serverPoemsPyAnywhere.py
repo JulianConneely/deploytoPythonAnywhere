@@ -14,13 +14,13 @@ CORS(app)
 @app.route('/poems')
 def getAll():
     #print("in getall")
-    results = poemsDAO.getAll()
+    results = poemsDAOPythonAnywhere.getAll()
     return jsonify(results)
 
 #curl "http://127.0.0.1:5000/poems/2"
 @app.route('/poems/<int:id>')
 def findById(id):
-    foundpoems = poemsDAO.findByID(id)
+    foundpoems = poemsDAOPythonAnywhere.findByID(id)
 
     return jsonify(foundpoems)
 
@@ -37,14 +37,14 @@ def create():
         "Price": request.json['Price'],
     }
     values =(poems['Title'],poems['Author'],poems['Price'])
-    newId = poemsDAO.create(values)
+    newId = poemsDAOPythonAnywhere.create(values)
     poems['id'] = newId
     return jsonify(poems)
 
 #curl  -i -H "Content-Type:application/json" -X PUT -d "{\"Title\":\"hello\",\"Author\":\"someone\",\"Price\":123}" http://127.0.0.1:5000/poems/1
 @app.route('/poems/<int:id>', methods=['PUT'])
 def update(id):
-    foundpoems = poemsDAO.findByID(id)
+    foundpoems = poemsDAOPythonAnywhere.findByID(id)
     if not foundpoems:
         abort(404)
     
@@ -61,7 +61,7 @@ def update(id):
     if 'Price' in reqJson:
         foundpoems['Price'] = reqJson['Price']
     values = (foundpoems['Title'],foundpoems['Author'],foundpoems['Price'],foundpoems['id'])
-    poemsDAO.update(values)
+    poemsDAOPythonAnywhere.update(values)
     return jsonify(foundpoems)
         
 
@@ -69,7 +69,7 @@ def update(id):
 
 @app.route('/poems/<int:id>' , methods=['DELETE'])
 def delete(id):
-    poemsDAO.delete(id)
+    poemsDAOPythonAnywhere.delete(id)
     return jsonify({"done":True})
 
 
